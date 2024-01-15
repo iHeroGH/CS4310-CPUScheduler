@@ -73,7 +73,7 @@ def execute(
     FILE_NAME = "comparison/comparison"
     DIMENSIONS = 5
     NUM_TRIALS = 20
-    log = False
+    log = True
 
     # If given a list of items to plot, just plot it. No need to re-compare
     if to_plot:

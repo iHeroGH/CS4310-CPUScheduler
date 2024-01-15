@@ -203,6 +203,10 @@ class Scheduler:
 
         total_time_elapsed = 0
         jobs_complete: set[Job] = set()
+
+        print("Job\t\tStart\t\tEnd\t\tComplete?")
+        print("---\t\t-----\t\t---\t\t---------")
+
         while len(jobs_complete) != len(self.schedule):
             for job in self.schedule:
 
@@ -212,7 +216,7 @@ class Scheduler:
 
                 # Before processing
                 if log:
-                    print(repr(job))
+                    print(job.name, '\t\t', total_time_elapsed, end="\t\t")
 
                 # Process this job
                 # We either spend the duration of the time needed by the process
@@ -229,8 +233,16 @@ class Scheduler:
 
                 # After processing
                 if log:
-                    print(repr(job), "Total time so far: ", total_time_elapsed)
-                    print("------")
+                    print(
+                        total_time_elapsed,
+                        '\t\t',
+                        (f'Job {job.name} completed @ {total_time_elapsed}')
+                        if job.is_complete else ''
+                    )
+                    print(
+                        "---------------------------------------------------" +
+                        "----------------------"
+                    )
 
                 # If the job becomes complete
                 # set_turnaround_time will not set the turnaround time if it's

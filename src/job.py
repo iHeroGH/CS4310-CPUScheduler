@@ -58,9 +58,8 @@ class Job:
         Creates a Job with a random required time based on the given min and
         max values.
 
-        The job's name will be "Job{}" where {} is the current value of the
-        running_id field. When the initialization method is called, this
-        ID will be incremented.
+        The job's name will be "running_id". When the initialization method is
+        called, this ID will be incremented.
 
         Parameters
         ----------
@@ -70,7 +69,7 @@ class Job:
             The maximum time required for completion
         """
         return cls(
-            f"Job{cls.running_id}",
+            f"{cls.running_id}",
             randint(min_required, max_required)
         )
 
